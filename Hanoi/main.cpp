@@ -38,12 +38,20 @@ void dibujatorre1(){
     }
 }
 void muevegrafico(int salida, int destino){
+    int aux1,aux2;
+    matriz[destino][0]+=1;
+    aux1=matriz[destino][0];
+    aux2=matriz[salida][0];
+    matriz[destino][aux1]=matriz[salida][aux2];
+    borradisco(salida,matriz[salida][0],matriz[salida][aux2]);
+    dibujadisco(destino,matriz[destino][0],matriz[destino][aux1]);
+    matriz[salida][aux2]=0;
+    matriz[salida][0]-=1;
 
 }
 int main (){
 printf("N de discos: ");scanf("%d",&ndiscos);
-hanoi(ndiscos,1,2,3);
-printf("%d\n",movimientos);
+
 
 initwindow(1080,500);
     setbkcolor(RGB(0, 0, 0));
@@ -70,15 +78,15 @@ initwindow(1080,500);
     line(850,150,850 ,420);
 
     dibujatorre1();
-
+    delay(1000);
+    hanoi(ndiscos,1,2,3);
+    printf("%d\n",movimientos);
 
 getch();
 closegraph();
 
-
 return 0;
 }
-
 
 int hanoi(int ndiscos, int a, int b, int c)
 {
@@ -86,7 +94,10 @@ int hanoi(int ndiscos, int a, int b, int c)
     {
         hanoi(ndiscos-1, a, c, b);
         movimientos++;
+        muevegrafico(a,c);
+        delay(500);
         printf("mover disco de Torre %d a Torre %d \n",a ,c);
         hanoi(ndiscos-1,b, a, c);
     }
 }
+
