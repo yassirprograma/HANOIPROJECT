@@ -1,14 +1,31 @@
 #include <stdio.h>
 #include <winbgim.h>
+#include <bits/stdc++.h>
 
-int hanoi(int, char, char, char);
+using namespace std;
 
-int main (){
-
+int hanoi(int, int, int,int);
 int ndiscos, movimientos;
+struct pieza{
+    int xi;
+    int xf;
+    int yi;
+    int yf;
+    int tam;
+    int torre;
+};
 
+void dibujadisco(int iddisco){
+
+
+}
+void muevegrafico(){
+
+}
+int main (){
 printf("N de discos: ");scanf("%d",&ndiscos);
-movimientos = hanoi(ndiscos,'A','B','C');
+hanoi(ndiscos,1,2,3);
+printf("%d\n",movimientos);
 
 initwindow(1080,500);
     setbkcolor(RGB(102, 255, 102));
@@ -17,19 +34,17 @@ initwindow(1080,500);
     setcolor(4);
     outtextxy(250,10,"Simulacion del juego de Torres de Hanoi");
 
-
+    settextstyle(3,HORIZ_DIR,4);
+    setcolor(2);
+    outtextxy(200,450,"Torre 1");
 
     settextstyle(3,HORIZ_DIR,4);
     setcolor(2);
-    outtextxy(200,450,"Torre A");
+    outtextxy(500,450,"Torre 2");
 
     settextstyle(3,HORIZ_DIR,4);
     setcolor(2);
-    outtextxy(500,450,"Torre B");
-
-    settextstyle(3,HORIZ_DIR,4);
-    setcolor(2);
-    outtextxy(800,450,"Torre C");
+    outtextxy(800,450,"Torre 3");
 
     setcolor(0);
     line(250,150,250 ,420);
@@ -37,23 +52,23 @@ initwindow(1080,500);
     line(850,150,850 ,420);
 
 
+
+
 getch();
 closegraph();
-
 
 
 return 0;
 }
 
 
-int hanoi(int ndiscos, char a, char b, char c)
+int hanoi(int ndiscos, int a, int b, int c)
 {
     if(ndiscos > 0)
     {
         hanoi(ndiscos-1, a, c, b);
-
-        printf("mover disco de %c a %c \n",a ,c);
-
+        movimientos++;
+        printf("mover disco de Torre %d a Torre %d \n",a ,c);
         hanoi(ndiscos-1,b, a, c);
     }
 }
