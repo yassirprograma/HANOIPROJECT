@@ -1,6 +1,6 @@
 # depslib dependency file v1.0
-1585807473 source:c:\users\yassirprograma\desktop\fdp\pruebas\hanoi\hanoi\main.cpp
+1585892381 source:c:\users\yassirprograma\desktop\fdp\pruebas\hanoi\hanoi\main.cpp
 	<stdio.h>
 	<winbgim.h>
-	<bits/stdc++.h>
+	<conio.h>
 
